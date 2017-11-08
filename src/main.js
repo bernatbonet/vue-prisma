@@ -8,6 +8,27 @@ import router from './router'
 
 Vue.use(VueMaterial)
 
+/* Vue.material.registerTheme('default', {
+  primary: 'blue',
+  accent: 'red',
+  warn: 'yellow',
+  background: 'grey'
+})
+
+ Vue.material.registerTheme({
+  app: {
+    primary: 'red'
+  },
+  about: {
+    primary: 'yellow'
+  },
+  contact: {
+    primary: 'teal'
+  }
+})
+
+Vue.material.setCurrentTheme('app') */
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
