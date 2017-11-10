@@ -2,10 +2,11 @@
   <md-layout md-tag="form" novalidate @submit.stop.prevent="submit" md-align="center">
     <md-layout md-tag="md-card" md-column md-flex="30"  md-flex-medium="40" md-flex-small="60" md-flex-xsmall="90" class="md-primary">
       <md-card-header>
-        <!--<div class="md-title">Vue-Prisma Login Form</div>-->
+        <!--<div class="md-title">Login</div>-->
         <md-avatar class="md-avatar-icon md-large md-warn">
           <img src="../assets/logo.png" alt="People">
         </md-avatar>
+        <p v-if="error" class="error">Bad login information</p>
       </md-card-header>
       <md-card-content>
         <md-input-container>
@@ -29,20 +30,33 @@
 </template>
 
 <script>
+  import auth from '../auth'
   export default {
     name: 'login',
     data () {
       return {
-        loader: false,
-        infoError: false,
         username: '',
-        password: ''
+        password: '',
+        error: false
+      }
+    },
+    methods: {
+      login () {
+        auth.login(this.username, this.password, loggedIn => {
+          if (!loggedIn) {
+            this.error = true
+          } else {
+            this.$router.replace(this.$route.query.redirect || '/')
+          }
+        })
       }
     }
   }
 </script>
 
 <style>
-
+  .error {
+    color: red
+  }
 </style>
 
