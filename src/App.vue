@@ -1,11 +1,10 @@
 <template>
   <v-app>
-    <!--<v-navigation-drawer app>Drawer</v-navigation-drawer>-->
     <v-toolbar dark>
       <v-toolbar-title>Title</v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-toolbar-items class="hidden-sm-and-down" v-for="item in items" :key="item.text">
-        <v-btn flat>{{ item.text }}</v-btn>
+      <v-toolbar-items class="hidden-sm-and-down">
+        <v-btn flat></v-btn>
       </v-toolbar-items>
     </v-toolbar>
     <v-content>
@@ -13,7 +12,10 @@
         <router-view></router-view>
       </v-container>
     </v-content>
-    <v-footer app></v-footer>
+    <v-footer class="pa-3">
+      <v-spacer></v-spacer>
+      <div>Prisma © {{ new Date().getFullYear() }}</div>
+    </v-footer>
   </v-app>
 </template>
 
@@ -21,5 +23,4 @@
 </script>
 
 <style>
-
 </style>

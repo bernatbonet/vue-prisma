@@ -1,90 +1,76 @@
 <template>
-  <v-layout>
-    <v-flex xs12 sm6 offset-sm3>
-      <v-card>
-        <v-card-media src="/static/doc-images/cards/desert.jpg" height="200px">
-        </v-card-media>
-        <v-card-title primary-title>
-          <div>
-            <h3 class="headline mb-0">Kangaroo Valley Safari</h3>
-            <div>Located two hours south of Sydney in the <br>Southern Highlands of New South Wales, ...</div>
-          </div>
-        </v-card-title>
-        <v-card-actions>
-          <v-btn flat color="orange">Share</v-btn>
-          <v-btn flat color="orange">Explore</v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-flex>
-  </v-layout>
+   <v-container>
+    <v-layout row>
+      <!--<v-flex xs12 sm4 offset-sm4>-->
+      <v-flex xs12 sm4 offset-sm4>
+        <v-card>
+          <v-toolbar color="blue">
+            <v-spacer></v-spacer>
+            <v-toolbar-title class="white--text">Login</v-toolbar-title>
+            <v-spacer></v-spacer>
+          </v-toolbar>
+          <v-card-text>
+            <v-container>
+              <form @submit.prevent="onLogin">
+                <v-layout row>
+                  <v-flex xs12>
+                    <v-text-field
+                      name="username"
+                      label="Username"
+                      id="username"
+                      v-model="username"
+                      type="text"
+                      required></v-text-field>
+                  </v-flex>
+                </v-layout>
+                <v-layout row>
+                  <v-flex xs12>
+                    <v-text-field
+                      name="password"
+                      label="Password"
+                      id="password"
+                      v-model="password"
+                      type="password"
+                      required></v-text-field>
+                  </v-flex>
+                </v-layout>
+                <v-layout row>
+                  <v-flex xs12>
+                    <v-btn type="submit">Sign in</v-btn>
+                  </v-flex>
+                </v-layout>
+              </form>
+            </v-container>
+          </v-card-text>
+        </v-card>
+      </v-flex>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>
-  // import auth from '@/services/auth'
-  import { validationMixin } from 'vuelidate'
-  import { required, maxLength, email } from 'vuelidate/lib/validators'
-
+  import auth from '@/services/auth'
   export default {
-    mixins: [validationMixin],
-    validations: {
-      name: { required, maxLength: maxLength(10) },
-      email: { required, email },
-      select: { required },
-      checkbox: { required }
+    data () {
+      return {
+        username: '',
+        password: ''
+      }
     },
-    name: 'login',
-    data: () => ({
-      valid: true,
-      name: '',
-      nameRules: [
-        (v) => !!v || 'Name is required'// ,
-        // (v) => v && v.length <= 10 || 'Name must be less than 10 characters'
-      ],
-      email: '',
-      /* emailRules: [
-        (v) => !!v || 'E-mail is required',
-        (v) => /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'E-mail must be valid'
-      ], */
-      select: null,
-      items: [
-        'Item 1',
-        'Item 2',
-        'Item 3',
-        'Item 4'
-      ],
-      checkbox: false
-    }),
     methods: {
-      login () {
-        /* auth.login(this.username, this.password, loggedIn => {
+      onLogin () {
+        auth.login(this.username, this.password, loggedIn => {
           if (!loggedIn) {
             this.error = true
           } else {
             this.$router.replace(this.$route.query.redirect || '/')
           }
-        }) */
+        })
         console.info('login')
-      },
-      submit () {
-        if (this.$refs.form.validate()) {
-          // Native form submission is not yet supported
-          /* axios.post('/api/submit', {
-            name: this.name,
-            email: this.email,
-            select: this.select,
-            checkbox: this.checkbox
-          }) */
-          console.info('validated')
-        }
-      },
-      clear () {
-        this.$refs.form.reset()
       }
     }
   }
 </script>
 
-<style>
-
-</style>
+<style></style>
 

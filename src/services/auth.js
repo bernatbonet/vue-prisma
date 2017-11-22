@@ -1,9 +1,9 @@
 import router from '@/router'
 
 // URL and endpoint constants
-const API_URL = 'http://localhost:3001/'
-const LOGIN_URL = API_URL + 'sessions/create/'
-const SIGNUP_URL = API_URL + 'users/'
+const API_URL = 'https://bernatbonet.auth0.com/api/v2'
+const LOGIN_URL = API_URL + '/'
+const SIGNUP_URL = API_URL + '/users/'
 
 export default {
   // User object will let us check authentication status
