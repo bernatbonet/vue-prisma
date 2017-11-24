@@ -1,7 +1,7 @@
 import axios from 'axios'
 // import getHeader from '../auth.config'
 // URL and endpoint constants
-const API_URL = 'localhost:9988/'
+const API_URL = 'http://localhost:9988/'
 const LOGIN_URL = API_URL + 'auth/api-token-auth/'
 
 export const getHeader = function () {
@@ -18,9 +18,11 @@ export default {
     return new Promise(function (resolve, reject) {
       axios.post(LOGIN_URL, valor, getHeader)
         .then(function (res) {
+          console(res)
           resolve(res)
         })
         .catch(function (err) {
+          console(err)
           reject(err)
         })
     })
