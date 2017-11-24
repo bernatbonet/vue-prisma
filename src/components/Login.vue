@@ -18,7 +18,7 @@
                       name="username"
                       label="Username"
                       id="username"
-                      v-model="username"
+                      v-model="credentials.username"
                       type="text"
                       required></v-text-field>
                   </v-flex>
@@ -29,7 +29,7 @@
                       name="password"
                       label="Password"
                       id="password"
-                      v-model="password"
+                      v-model="credentials.password"
                       type="password"
                       required></v-text-field>
                   </v-flex>
@@ -49,24 +49,25 @@
 </template>
 
 <script>
-  import auth from '@/services/auth'
+  import LoginService from '@/services/LoginService'
   export default {
     data () {
       return {
-        username: '',
-        password: ''
+        credentials: {
+          username: '',
+          password: ''
+        }
       }
     },
     methods: {
       onLogin () {
-        auth.login(this.username, this.password, loggedIn => {
-          if (!loggedIn) {
-            this.error = true
-          } else {
-            this.$router.replace(this.$route.query.redirect || '/')
-          }
-        })
-        console.info('login')
+        LoginService.login(this.credentials)
+          .then(function (res) {
+            console.info(res)
+          })
+          .catch(function (err) {
+            console.info(err)
+          })
       }
     }
   }

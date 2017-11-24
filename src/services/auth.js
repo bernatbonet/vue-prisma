@@ -1,8 +1,10 @@
 import router from '@/router'
 
 // URL and endpoint constants
-const API_URL = 'https://bernatbonet.auth0.com/api/v2'
-const LOGIN_URL = API_URL + '/'
+const API_URL = 'localhost:9988/'
+
+const LOGIN_URL = API_URL + 'auth/api-token-auth/'
+
 const SIGNUP_URL = API_URL + '/users/'
 
 export default {
@@ -12,18 +14,16 @@ export default {
   },
   // Send a request to the login URL and save the returned JWT
   login (context, creds, redirect) {
-    context.$http.post(LOGIN_URL, creds, (data) => {
-      sessionStorage.setItem('id_token', data.id_token)
-      sessionStorage.setItem('access_token', data.access_token)
-
+    context.$http.post(LOGIN_URL, creds, (response) => {
+      sessionStorage.setItem('token', response.token)
       this.user.authenticated = true
 
       // Redirect to specific route
       if (redirect) {
         router.go(redirect)
       }
-    }).error((errors) => {
-      context.errors = errors
+    }).error((err) => {
+      context.errors = err
     })
   },
   // Signup
