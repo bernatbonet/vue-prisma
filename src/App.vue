@@ -1,7 +1,7 @@
 <template>
   <v-app>
-    <v-toolbar dark>
-      <v-toolbar-title>Title</v-toolbar-title>
+    <v-toolbar dense color="blue">
+      <v-toolbar-title class="white--text">Prisma</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items class="hidden-sm-and-down">
         <v-btn flat></v-btn>
@@ -12,9 +12,9 @@
         <router-view></router-view>
       </v-container>
     </v-content>
-    <v-footer class="pa-3">
+    <v-footer dense class="pa-3" color="blue">
       <v-spacer></v-spacer>
-      <div>Prisma © {{ new Date().getFullYear() }}</div>
+      <div class="white--text">Prisma © {{ new Date().getFullYear() }}</div>
     </v-footer>
   </v-app>
 </template>

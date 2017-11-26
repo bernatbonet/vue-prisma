@@ -4,25 +4,23 @@ import axios from 'axios'
 const API_URL = 'http://localhost:9988/'
 const LOGIN_URL = API_URL + 'auth/api-token-auth/'
 
-export const getHeader = function () {
+/* export const getHeader = function () {
   const tokenData = JSON.parse(window.sessionStorage.getItem('token'))
   const headers = {
     'Accept': 'application/json',
     'Authorization': 'Bearer' + tokenData.access_token
   }
   return headers
-}
+} */
 
 export default {
   login (valor) {
-    return new Promise(function (resolve, reject) {
-      axios.post(LOGIN_URL, valor, getHeader)
-        .then(function (res) {
-          console(res)
-          resolve(res)
+    return new Promise((resolve, reject) => {
+      axios.post(LOGIN_URL, valor)
+        .then((res) => {
+          resolve(res.data)
         })
-        .catch(function (err) {
-          console(err)
+        .catch((err) => {
           reject(err)
         })
     })

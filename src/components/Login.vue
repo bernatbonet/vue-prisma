@@ -4,10 +4,8 @@
       <!--<v-flex xs12 sm4 offset-sm4>-->
       <v-flex xs12 sm4 offset-sm4>
         <v-card>
-          <v-toolbar color="blue">
-            <v-spacer></v-spacer>
+          <v-toolbar dense color="blue">
             <v-toolbar-title class="white--text">Login</v-toolbar-title>
-            <v-spacer></v-spacer>
           </v-toolbar>
           <v-card-text>
             <v-container>
@@ -36,7 +34,9 @@
                 </v-layout>
                 <v-layout row>
                   <v-flex xs12>
-                    <v-btn type="submit">Sign in</v-btn>
+                    <center>
+                     <v-btn type="submit">Sign in</v-btn>
+                    </center>
                   </v-flex>
                 </v-layout>
               </form>
@@ -62,11 +62,11 @@
     methods: {
       onLogin () {
         LoginService.login(this.credentials)
-          .then(function (res) {
-            console.info(res)
+          .then((res) => {
+            console.info(res.token)
           })
-          .catch(function (err) {
-            console.info(err)
+          .catch(() => {
+            console.info('Error de validación')
           })
       }
     }
