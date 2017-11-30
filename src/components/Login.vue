@@ -55,15 +55,25 @@
       return {
         credentials: {
           username: '',
-          password: ''
+          password: '',
+          token: ''
         }
       }
+    },
+    computed: {
+      getToken () {
+        return this.$store.state.user.token
+      }
+
     },
     methods: {
       onLogin () {
         LoginService.login(this.credentials)
           .then((res) => {
-            console.info(res.token)
+            console.info(this.credentials.username + ' ' + res.token)
+            this.$store.commit('setSaludo', 'Hi')
+            this.$store.commit('setNombre', 'John')
+            this.$store.state.login.commit('setUsername', this.credentials.username)
           })
           .catch(() => {
             console.info('Error de validación')
