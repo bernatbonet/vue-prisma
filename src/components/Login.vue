@@ -70,10 +70,13 @@
       onLogin () {
         LoginService.login(this.credentials)
           .then((res) => {
-            console.info(this.credentials.username + ' ' + res.token)
+            // console.info(this.credentials.username + ' ' + res.token)
             this.$store.commit('setSaludo', 'Hi')
-            this.$store.commit('setNombre', 'John')
-            this.$store.state.login.commit('setUsername', this.credentials.username)
+            this.$store.commit('setNombre', this.credentials.username)
+            console.log(this.$store.getters.getSaludo)
+            console.log(this.$store.getters.getNombre)
+            console.log(this.$store.getters('login/getUsername'))
+            this.$store.commit('login/setUsername', this.credentials.username)
           })
           .catch(() => {
             console.info('Error de validación')

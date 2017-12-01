@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import loginStore from '@/store/Login'
+import loginStore from '@/store/LoginStore'
 
 Vue.use(Vuex)
 
