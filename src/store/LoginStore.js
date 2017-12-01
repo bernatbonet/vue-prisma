@@ -21,12 +21,11 @@ const getters = {
 
 const mutations = {
   setUsername: (state, username) => {
-    state.user.username = username
+    user.username = username
   },
   setToken: (state, token) => {
-    state.user.token = token
-  }
-}
+    user.token = token
+  }}
 
 export default {
   namespaced: true,
