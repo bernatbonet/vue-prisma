@@ -4,7 +4,7 @@
       <!--<v-flex xs12 sm4 offset-sm4>-->
       <v-flex xs12 sm4 offset-sm4>
         <v-card>
-          <v-toolbar dense color="blue">
+          <v-toolbar dense color="blue darken-3">
             <v-toolbar-title class="white--text">Login</v-toolbar-title>
           </v-toolbar>
           <v-card-text>
@@ -54,9 +54,8 @@
     data () {
       return {
         credentials: {
-          username: '',
-          password: '',
-          token: ''
+          username: null,
+          password: null
         }
       }
     },
@@ -72,9 +71,13 @@
           .then((res) => {
             /* this.$store.commit('setNombre', this.credentials.username)
             console.log(this.$store.getters.getNombre)
-            console.log(this.$store.getters['login/getUsername']) */
+            console.log(this.$store.getters['login/getUsername'])
             this.$store.commit('login/setUsername', this.credentials.username)
-            this.$store.commit('login/setToken', res.token)
+            this.$store.commit('login/setToken', res.token) */
+            this.$store.dispatch('login/setUsername', this.credentials.username)
+            this.$store.dispatch('login/setToken', res.token)
+            this.$store.dispatch('login/setTimeIn', new Date())
+            window.sessionStorage.setItem('userToken', JSON.stringify(res.token))
           })
           .catch(() => {
             console.error('Error de validación')
