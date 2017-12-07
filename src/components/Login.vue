@@ -49,7 +49,8 @@
 </template>
 
 <script>
-  import LoginService from '@/services/LoginService'
+  import LoginService, { getHeader } from '@/services/LoginService'
+  import CompanyService from '@/services/CompanyService'
   export default {
     data () {
       return {
@@ -78,6 +79,13 @@
             this.$store.dispatch('login/setToken', res.token)
             this.$store.dispatch('login/setTimeIn', new Date())
             window.sessionStorage.setItem('userToken', JSON.stringify(res.token))
+            CompanyService.getCompanies(getHeader())
+              .then((res) => {
+                console.log(res)
+              })
+              .catch(() => {
+                console.error('Error recuperando companias')
+              })
           })
           .catch(() => {
             console.error('Error de validación')

@@ -4,14 +4,14 @@ import axios from 'axios'
 const API_URL = 'http://localhost:9988/'
 const LOGIN_URL = API_URL + 'auth/api-token-auth/'
 
-/* export const getHeader = function () {
-  const tokenData = JSON.parse(window.sessionStorage.getItem('token'))
+export const getHeader = function () {
+  const tokenData = JSON.parse(window.sessionStorage.getItem('userToken'))
   const headers = {
     'Accept': 'application/json',
-    'Authorization': 'Bearer' + tokenData.access_token
+    'Authorization': 'Token ' + tokenData
   }
   return headers
-} */
+}
 
 export default {
   login (valor) {

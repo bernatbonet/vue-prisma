@@ -22,7 +22,7 @@ const getters = {
     return getters.getUser.permissions
   },
   isAuthenticated: (state, getters) => {
-    return (getters.getToken !== '')
+    return (getters.getToken !== null)
   }
 }
 
