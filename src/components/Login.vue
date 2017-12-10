@@ -50,7 +50,7 @@
 
 <script>
   import LoginService, { getHeader } from '@/services/LoginService'
-  import CompanyService from '@/services/CompanyService'
+  // import CompanyService from '@/services/CompanyService'
   export default {
     data () {
       return {
@@ -70,21 +70,25 @@
       onLogin () {
         LoginService.login(this.credentials)
           .then((res) => {
-            /* this.$store.commit('setNombre', this.credentials.username)
-            console.log(this.$store.getters.getNombre)
-            console.log(this.$store.getters['login/getUsername'])
-            this.$store.commit('login/setUsername', this.credentials.username)
-            this.$store.commit('login/setToken', res.token) */
+            // Save login
+            // this.$store.getters['login/getUsername']
             this.$store.dispatch('login/setUsername', this.credentials.username)
             this.$store.dispatch('login/setToken', res.token)
             this.$store.dispatch('login/setTimeIn', new Date())
             window.sessionStorage.setItem('userToken', JSON.stringify(res.token))
-            CompanyService.getCompanies(getHeader())
+            LoginService.getUser(getHeader(), '?username=' + this.credentials.username)
               .then((res) => {
                 console.log(res)
+                this.$store.dispatch('login/setId', res[0].id)
+                this.$store.dispatch('login/setUsername', res[0].username)
+                this.$store.dispatch('login/setFirstName', res[0].first_name)
+                this.$store.dispatch('login/setLastName', res[0].last_name)
+                this.$store.dispatch('login/setEmail', res[0].email)
+                // Route to user card
+                this.$router.push('/user')
               })
               .catch(() => {
-                console.error('Error recuperando companias')
+                console.error('Error recuperando datos usuario')
               })
           })
           .catch(() => {
