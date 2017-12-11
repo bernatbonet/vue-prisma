@@ -1,15 +1,17 @@
 const user = {
   id: null,
   username: null,
+  password: null,
   first_name: null,
   last_name: null,
   email: null,
+  is_superuser: null,
   is_active: null,
   is_staff: null,
-  is_superuser: null,
+  date_joined: null,
+  last_login: null,
   token: null,
   timeIn: null,
-  last_login: null,
   permissions: []
 }
 
@@ -23,6 +25,9 @@ const getters = {
   getUsername: (state) => {
     return user.username
   },
+  getPassword: (state) => {
+    return user.password
+  },
   getFirstName: (state) => {
     return user.first_name
   },
@@ -31,6 +36,21 @@ const getters = {
   },
   getEmail: (state) => {
     return user.email
+  },
+  getIsSuperuser: (state) => {
+    return user.is_superuser
+  },
+  getIsActive: (state) => {
+    return user.is_active
+  },
+  getIsStaff: (state) => {
+    return user.is_staff
+  },
+  getDateJoined: (state) => {
+    return user.date_joined
+  },
+  getLastLogin: (state) => {
+    return user.last_login
   },
   getToken: (state, getters) => {
     return getters.getUser.token
@@ -53,6 +73,9 @@ const mutations = {
   setUsername: (state, username) => {
     user.username = username
   },
+  setPassword: (state, password) => {
+    user.password = password
+  },
   setFirstName: (state, firstName) => {
     user.first_name = firstName
   },
@@ -61,6 +84,21 @@ const mutations = {
   },
   setEmail: (state, email) => {
     user.email = email
+  },
+  setIsSuperuser: (state, isSuperUser) => {
+    user.is_superuser = isSuperUser
+  },
+  setIsActive: (state, isActive) => {
+    user.is_active = isActive
+  },
+  setIsStaff: (state, isStaff) => {
+    user.is_staff = isStaff
+  },
+  setDateJoined: (state, dateJoined) => {
+    user.date_joined = dateJoined
+  },
+  setLastLogin: (state, lastLogin) => {
+    user.last_login = lastLogin
   },
   setToken: (state, token) => {
     user.token = token
@@ -77,6 +115,9 @@ const actions = {
   setUsername: (context, username) => {
     context.commit('setUsername', username)
   },
+  setPassword: (context, password) => {
+    context.commit('setPassword', password)
+  },
   setFirstName: (context, firstName) => {
     context.commit('setFirstName', firstName)
   },
@@ -85,6 +126,21 @@ const actions = {
   },
   setEmail: (context, email) => {
     context.commit('setEmail', email)
+  },
+  setIsSuperuser: (context, isSuperuser) => {
+    context.commit('setIsSuperuser', isSuperuser)
+  },
+  setIsActive: (context, isActive) => {
+    context.commit('setIsActive', isActive)
+  },
+  setIsStaff: (context, isStaff) => {
+    context.commit('setIsStaff', isStaff)
+  },
+  setDateJoined: (context, dateJoined) => {
+    context.commit('setDateJoined', dateJoined)
+  },
+  setLastLogin: (context, lastLogin) => {
+    context.commit('setLastLogin', lastLogin)
   },
   setToken: (context, token) => {
     context.commit('setToken', token)

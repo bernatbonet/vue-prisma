@@ -1,12 +1,36 @@
 {
   "usercard": {
     "title": "Modificación usuario",
-    "username.label": "Nombre de usuario",
-    "email.label": "Correo electrónico",
-    "firstName.label": "Nombre",
-    "lastName.label": "Apellidos",
-    "superUser.label": "Es superusuario ?",
-    "active.label": "Está activo ?",
-    "staff.label": "Es personal ?"
+    "labels": {
+      "username": "Nombre de usuario",
+      "password": "Contraseña",
+      "email": "Correo electrónico",
+      "firstName": "Nombre",
+      "lastName": "Apellidos",
+      "superUser": "¿ Es superusuario ?",
+      "active": "¿ Está activo ?",
+      "staff": "¿ Es personal ?",
+      "dateJoined": "Fecha de alta",
+      "hourJoined": "Hora de alta",
+      "lastLogin": "Fecha de útlimo ingreso",
+      "hourLogin": "Hora de útlimo ingreso"
+    },
+    "buttons": {
+      "dateJoined": {
+        "cancel": "Cancelar"
+      },
+      "hourJoined": {
+        "cancel": "Cancelar"
+      },
+      "lastLogin": {
+        "cancel": "Cancelar"
+      },
+      "hourLogin": {
+        "cancel": "Cancelar"
+      },
+      "change_password": "Cambiar contraseña",
+      "save": "Guardar",
+      "cancel": "Cancelar"
+    }
   }
 }

@@ -50,7 +50,6 @@
 
 <script>
   import LoginService, { getHeader } from '@/services/LoginService'
-  // import CompanyService from '@/services/CompanyService'
   export default {
     data () {
       return {
@@ -78,12 +77,18 @@
             window.sessionStorage.setItem('userToken', JSON.stringify(res.token))
             LoginService.getUser(getHeader(), '?username=' + this.credentials.username)
               .then((res) => {
-                console.log(res)
+                console.log(res[0])
                 this.$store.dispatch('login/setId', res[0].id)
                 this.$store.dispatch('login/setUsername', res[0].username)
+                this.$store.dispatch('login/setPassword', res[0].password)
                 this.$store.dispatch('login/setFirstName', res[0].first_name)
                 this.$store.dispatch('login/setLastName', res[0].last_name)
                 this.$store.dispatch('login/setEmail', res[0].email)
+                this.$store.dispatch('login/setIsSuperuser', res[0].is_superuser)
+                this.$store.dispatch('login/setIsActive', res[0].is_active)
+                this.$store.dispatch('login/setIsStaff', res[0].is_staff)
+                this.$store.dispatch('login/setDateJoined', res[0].date_joined)
+                this.$store.dispatch('login/setLastLogin', res[0].last_login)
                 // Route to user card
                 this.$router.push('/user')
               })
