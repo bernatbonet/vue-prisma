@@ -1,0 +1,12 @@
+{
+  "usercard": {
+    "title": "Modificación usuario",
+    "username.label": "Nombre de usuario",
+    "email.label": "Correo electrónico",
+    "firstName.label": "Nombre",
+    "lastName.label": "Apellidos",
+    "superUser.label": "Es superusuario ?",
+    "active.label": "Está activo ?",
+    "staff.label": "Es personal ?"
+  }
+}

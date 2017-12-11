@@ -56,17 +56,18 @@
         <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
         <span class="hidden-xs-only">Prisma</span>
       </v-toolbar-title>
-      <v-text-field
+      <!--<v-text-field
         light
         solo
         prepend-icon="search"
         placeholder="Search"
         style="max-width: 500px; min-width: 128px"
-      ></v-text-field>
+      ></v-text-field>-->
+      <v-spacer></v-spacer>
       <div class="d-flex align-center" style="margin-left: auto">
-        <v-btn icon>
+        <!--<v-btn icon>
           <v-icon>apps</v-icon>
-        </v-btn>
+        </v-btn>-->
         <v-btn icon>
           <v-icon>notifications</v-icon>
         </v-btn>
