@@ -92,12 +92,12 @@
                 // Route to user card
                 this.$router.push('/user')
               })
-              .catch(() => {
-                console.error('Error recuperando datos usuario')
+              .catch((err) => {
+                console.log('Hola' + err)
               })
           })
-          .catch(() => {
-            console.error('Error de validación')
+          .catch((err) => {
+            console.error(err)
           })
       }
     }
