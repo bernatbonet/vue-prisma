@@ -1,4 +1,14 @@
 {
+  "login": {
+    "title": "Acceso",
+    "labels": {
+      "username": "Nombre de usuario",
+      "password": "Contraseña"
+    },
+    "buttons": {
+      "sign_in": "Acceder"
+    }
+  },
   "usercard": {
     "title": "Modificación usuario",
     "labels": {

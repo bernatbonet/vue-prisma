@@ -1,0 +1,47 @@
+{
+  "login": {
+    "title": "Login",
+    "labels": {
+      "username": "Username",
+      "password": "Password"
+    },
+    "buttons": {
+      "sign_in": "Sign-in"
+    }
+  },
+  "usercard": {
+    "title": "Change user",
+    "labels": {
+      "username": "Username",
+      "password": "Password",
+      "email": "Email",
+      "firstName": "First name",
+      "lastName": "Last name",
+      "superUser": "Is superuser ?",
+      "active": "Is active ?",
+      "staff": "Is staff ?",
+      "dateJoined": "Date Joined",
+      "hourJoined": "Hour Joined",
+      "lastLogin": "Last login date",
+      "hourLogin": "last login hour"
+    },
+    "buttons": {
+      "dateJoined": {
+        "cancel": "Cancel"
+      },
+      "hourJoined": {
+        "cancel": "Cancel"
+      },
+      "lastLogin": {
+        "cancel": "Cancel"
+      },
+      "hourLogin": {
+        "cancel": "Cancel"
+      },
+      "change_password": "Change password",
+      "save": "Save",
+      "delete": "Delete",
+      "cancel": "Cancel"
+    }
+  }
+}

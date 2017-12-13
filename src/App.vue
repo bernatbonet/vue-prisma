@@ -2,52 +2,32 @@
   <v-app>
 
     <v-navigation-drawer v-if="$store.getters['login/isAuthenticated']" fixed clipped app v-model="drawer">
-      <v-list dense>
-        <template v-for="(item, i) in items">
-
-          <v-layout row v-if="item.heading" align-center :key="i">
-            <v-flex xs6>
-              <v-subheader v-if="item.heading">
-                {{ item.heading }}
-              </v-subheader>
-            </v-flex>
-          </v-layout>
-
-          <v-list-group v-else-if="item.children" v-model="item.model" no-action>
-            <v-list-tile slot="item" @click="">
-              <v-list-tile-action>
-                <v-icon>{{ item.model ? item.icon : item['icon-alt'] }}</v-icon>
-              </v-list-tile-action>
-              <v-list-tile-content>
-                <v-list-tile-title>
-                  {{ item.text }}
-                </v-list-tile-title>
-              </v-list-tile-content>
-            </v-list-tile>
-            <v-list-tile v-for="(child, i) in item.children" :key="i" @click="">
-              <v-list-tile-action v-if="child.icon">
-                <v-icon>{{ child.icon }}</v-icon>
-              </v-list-tile-action>
-              <v-list-tile-content>
-                <v-list-tile-title>
-                  {{ child.text }}
-                </v-list-tile-title>
-              </v-list-tile-content>
-            </v-list-tile>
-          </v-list-group>
-
-          <v-list-tile v-else @click="">
+      <v-list>
+        <v-list-group v-for="item in items" :value="item.active" v-bind:key="item.title">
+          <v-list-tile slot="item" @click="">
             <v-list-tile-action>
               <v-icon>{{ item.icon }}</v-icon>
             </v-list-tile-action>
             <v-list-tile-content>
-              <v-list-tile-title>
-                {{ item.text }}
-              </v-list-tile-title>
+              <v-list-tile-title>{{ item.title }}</v-list-tile-title>
             </v-list-tile-content>
+            <v-list-tile-action>
+              <v-icon>keyboard_arrow_down</v-icon>
+            </v-list-tile-action>
           </v-list-tile>
 
-        </template>
+          <v-list-tile v-for="subItem in item.items" v-bind:key="subItem.title" @click="">
+            <v-list-tile-action>
+              <v-icon>{{ subItem.icon }}</v-icon>
+            </v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title>{{ subItem.title }}</v-list-tile-title>
+            </v-list-tile-content>
+            <v-list-tile-action>
+              <v-icon>{{ subItem.action }}</v-icon>
+            </v-list-tile-action>
+          </v-list-tile>
+          </v-list-group>
       </v-list>
     </v-navigation-drawer>
 
@@ -56,13 +36,6 @@
         <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
         <span class="hidden-xs-only">Prisma</span>
       </v-toolbar-title>
-      <!--<v-text-field
-        light
-        solo
-        prepend-icon="search"
-        placeholder="Search"
-        style="max-width: 500px; min-width: 128px"
-      ></v-text-field>-->
       <v-spacer></v-spacer>
       <div class="d-flex align-center" style="margin-left: auto">
         <!--<v-btn icon>
@@ -93,22 +66,15 @@
     data: () => ({
       drawer: null,
       items: [
-        {heading: 'CONTACTS HEADING'},
-        {icon: 'contacts', text: 'Contacts'},
-        {icon: 'history', text: 'Frequently contacted'},
-        {icon: 'content_copy', text: 'Duplicates'},
-        {icon: 'keyboard_arrow_up',
-          'icon-alt': 'keyboard_arrow_down',
-          text: 'More',
-          model: true,
-          children: [
-            {text: 'Import'},
-            {text: 'Export'},
-            {text: 'Print'}
+        {
+          icon: 'settings',
+          title: 'Configuration',
+          items: [
+            {icon: 'list', title: 'Modules', url: ''},
+            {icon: 'contacts', title: 'Roles', url: ''},
+            {icon: 'account_circle', title: 'Users', url: ''}
           ]
-        },
-        { icon: 'settings', text: 'Settings' },
-        { icon: 'chat_bubble', text: 'Send feedback' }
+        }
       ]
     })
   }

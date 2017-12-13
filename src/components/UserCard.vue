@@ -93,6 +93,7 @@
 <script>
   import moment from 'moment'
   import UserService, { getHeader } from '@/services/UserService'
+  console.info('$i18n: ' + this.i18n)
   moment.locale('es')
 
   export default {

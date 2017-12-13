@@ -5,7 +5,7 @@
       <v-flex xs12 sm4 offset-sm4>
         <v-card>
           <v-toolbar dense color="blue darken-3">
-            <v-toolbar-title class="white--text">Login</v-toolbar-title>
+            <v-toolbar-title class="white--text">{{ $t('login.title') }}</v-toolbar-title>
           </v-toolbar>
           <v-card-text>
             <v-container>
@@ -14,7 +14,7 @@
                   <v-flex xs12>
                     <v-text-field
                       name="username"
-                      label="Username"
+                      :label="$t('login.labels.username')"
                       id="username"
                       v-model="credentials.username"
                       type="text"
@@ -25,7 +25,7 @@
                   <v-flex xs12>
                     <v-text-field
                       name="password"
-                      label="Password"
+                      :label="$t('login.labels.password')"
                       id="password"
                       v-model="credentials.password"
                       type="password"
@@ -35,7 +35,7 @@
                 <v-layout row>
                   <v-flex xs12>
                     <center>
-                     <v-btn type="submit">Sign in</v-btn>
+                     <v-btn type="submit">{{ $t('login.buttons.sign_in') }}</v-btn>
                     </center>
                   </v-flex>
                 </v-layout>
